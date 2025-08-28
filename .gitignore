@@ -1,0 +1,23 @@
+# Node
+node_modules
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build
+dist
+build
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs
+*.log
+
+# Editor / Sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
