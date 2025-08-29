@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Search } from 'lucide-react'
 import ProductCard from '../components/product/ProductCard'
