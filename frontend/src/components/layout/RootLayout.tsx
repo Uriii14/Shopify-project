@@ -1,14 +1,40 @@
 import { Link, Outlet } from 'react-router-dom'
+import { Search, ShoppingBag, Heart, User } from 'lucide-react'
 
 export default function RootLayout() {
   return (
     <div className="min-h-dvh flex flex-col">
       <header className="border-b">
         <nav className="max-w-7xl mx-auto h-16 px-4 flex items-center justify-between">
-          <Link to="/" className="font-semibold tracking-wide">Boutique</Link>
-          <div className="flex gap-6 text-sm">
-            <Link to="/products" className="hover:underline">Shop</Link>
-            <Link to="/cart" className="hover:underline">Cart</Link>
+          <div className="w-32"></div> {/* Spacer izquierdo */}
+          <Link to="/" className="text-xl font-bold tracking-wide">Boutique</Link>
+          <div className="flex items-center gap-4 w-32 justify-end">
+            <Link 
+              to="/products" 
+              className="hover:bg-gray-100 p-2 rounded-full transition-colors"
+              title="Buscar productos"
+            >
+              <Search size={20} className="text-gray-700 hover:text-gray-900" />
+            </Link>
+            <button 
+              className="hover:bg-gray-100 p-2 rounded-full transition-colors"
+              title="Favoritos"
+            >
+              <Heart size={20} className="text-gray-700 hover:text-gray-900" />
+            </button>
+            <Link 
+              to="/cart" 
+              className="hover:bg-gray-100 p-2 rounded-full transition-colors"
+              title="Carrito"
+            >
+              <ShoppingBag size={20} className="text-gray-700 hover:text-gray-900" />
+            </Link>
+            <button 
+              className="hover:bg-gray-100 p-2 rounded-full transition-colors"
+              title="Perfil"
+            >
+              <User size={20} className="text-gray-700 hover:text-gray-900" />
+            </button>
           </div>
         </nav>
       </header>

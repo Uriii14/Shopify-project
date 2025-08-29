@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Search } from 'lucide-react'
 
 export default function Catalog() {
+  const [searchQuery, setSearchQuery] = useState('')
+
   const products = [
     { id: 1, name: 'Vestido Elegante', price: 129.00, slug: 'vestido-elegante' },
     { id: 2, name: 'Blazer Moderno', price: 159.00, slug: 'blazer-moderno' },
@@ -12,30 +16,41 @@ export default function Catalog() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      {/* Header */}
+      {/* Search Bar */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Todos los Productos</h1>
-        <p className="text-gray-600 text-lg">
-          Descubre nuestra colección completa de {products.length} productos
-        </p>
+        <div className="relative max-w-md mx-auto">
+          <input
+            type="text"
+            placeholder="Buscar productos..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          />
+          <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        </div>
       </div>
 
-      {/* Filters */}
-      <div className="mb-12 pb-6 border-b">
-        <div className="flex flex-wrap gap-3 items-center">
-          <span className="font-medium text-sm">Filtros:</span>
-          <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-            Todos
-          </button>
-          <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-            Vestidos
-          </button>
-          <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-            Tops
-          </button>
-          <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-            Pantalones
-          </button>
+      {/* You might also like section */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-8">You might also like</h2>
+        
+        {/* Filters */}
+        <div className="mb-12 pb-6 border-b">
+          <div className="flex flex-wrap gap-3 items-center">
+            <span className="font-medium text-sm">Filtros:</span>
+            <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
+              Todos
+            </button>
+            <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
+              Vestidos
+            </button>
+            <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
+              Tops
+            </button>
+            <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
+              Pantalones
+            </button>
+          </div>
         </div>
       </div>
 
