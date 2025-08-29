@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Search } from 'lucide-react'
+import ProductCard from '../components/product/ProductCard'
 
 export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState('')
 
   const products = [
-    { id: 1, name: 'Vestido Elegante', price: 129.00, slug: 'vestido-elegante' },
-    { id: 2, name: 'Blazer Moderno', price: 159.00, slug: 'blazer-moderno' },
-    { id: 3, name: 'Pantalón Clásico', price: 89.00, slug: 'pantalon-clasico' },
-    { id: 4, name: 'Camisa Premium', price: 79.00, slug: 'camisa-premium' },
-    { id: 5, name: 'Falda Midi', price: 69.00, slug: 'falda-midi' },
-    { id: 6, name: 'Chaqueta Denim', price: 119.00, slug: 'chaqueta-denim' },
+    { slug: 'elegant-dress', name: 'Elegant Dress', price: 129, tag: 'new' as const },
+    { slug: 'modern-blazer', name: 'Modern Blazer', price: 159, tag: 'bestseller' as const },
+    { slug: 'classic-pants', name: 'Classic Pants', price: 89 },
+    { slug: 'premium-shirt', name: 'Premium Shirt', price: 79 },
+    { slug: 'midi-skirt', name: 'Midi Skirt', price: 69, tag: 'sale' as const },
+    { slug: 'denim-jacket', name: 'Denim Jacket', price: 119 },
   ]
 
   return (
@@ -21,7 +22,7 @@ export default function Catalog() {
         <div className="relative max-w-md mx-auto">
           <input
             type="text"
-            placeholder="Buscar productos..."
+            placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
@@ -37,46 +38,40 @@ export default function Catalog() {
         {/* Filters */}
         <div className="mb-12 pb-6 border-b">
           <div className="flex flex-wrap gap-3 items-center">
-            <span className="font-medium text-sm">Filtros:</span>
+            <span className="font-medium text-sm">Filters:</span>
             <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-              Todos
+              All
             </button>
             <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-              Vestidos
+              Dresses
             </button>
             <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
               Tops
             </button>
             <button className="px-4 py-2 border rounded-full text-sm hover:bg-gray-50 transition-colors">
-              Pantalones
+              Pants
             </button>
           </div>
         </div>
       </div>
 
       {/* Products Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
         {products.map((product) => (
-          <Link 
-            key={product.id} 
-            to={`/product/${product.slug}`}
-            className="group"
-          >
-            <div className="aspect-square bg-gray-100 mb-4 group-hover:bg-gray-200 transition-colors">
-              <div className="w-full h-full flex items-center justify-center text-gray-500">
-                {product.name}
-              </div>
-            </div>
-            <h3 className="font-medium mb-1">{product.name}</h3>
-            <p className="text-gray-600">€{product.price.toFixed(2)}</p>
-          </Link>
+          <ProductCard 
+            key={product.slug} 
+            slug={product.slug}
+            name={product.name}
+            price={product.price}
+            tag={product.tag}
+          />
         ))}
       </div>
 
       {/* Load More */}
       <div className="text-center mt-16">
         <button className="border border-black px-8 py-3 font-medium hover:bg-black hover:text-white transition-colors">
-          Cargar Más Productos
+          Load More Products
         </button>
       </div>
     </div>

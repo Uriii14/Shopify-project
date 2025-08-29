@@ -12,26 +12,26 @@ export default function RootLayout() {
             <Link 
               to="/products" 
               className="hover:bg-gray-100 p-2 rounded-full transition-colors"
-              title="Buscar productos"
+              title="Search products"
             >
               <Search size={20} className="text-gray-700 hover:text-gray-900" />
             </Link>
             <button 
               className="hover:bg-gray-100 p-2 rounded-full transition-colors"
-              title="Favoritos"
+              title="Favorites"
             >
               <Heart size={20} className="text-gray-700 hover:text-gray-900" />
             </button>
             <Link 
               to="/cart" 
               className="hover:bg-gray-100 p-2 rounded-full transition-colors"
-              title="Carrito"
+              title="Cart"
             >
               <ShoppingBag size={20} className="text-gray-700 hover:text-gray-900" />
             </Link>
             <button 
               className="hover:bg-gray-100 p-2 rounded-full transition-colors"
-              title="Perfil"
+              title="Profile"
             >
               <User size={20} className="text-gray-700 hover:text-gray-900" />
             </button>
